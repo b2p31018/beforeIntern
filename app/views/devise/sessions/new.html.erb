@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="text-center">Log in</h2>
+      <h2 class="text-center"><%= t('devise.sessions.new.sign_in') %></h2>
+
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form" }) do |f| %>
         <div class="form-group">
-          <%= f.label :email %><br />
+          <%= f.label :mail %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
@@ -22,7 +23,7 @@
         <% end %>
 
         <div class="text-center">
-          <%= f.submit "Log in", class: "btn btn-primary" %>
+          <%= f.submit t('devise.sessions.new.sign_in'), class: "btn btn-primary" %>
         </div>
       <% end %>
 
