@@ -34,6 +34,16 @@ ja:
     dash_boards:
       edit: 編集
       logout: ログアウト
+    users:
+    article:
+      index:
+        new_users_article: 記事新規作成
+      new:
+        title: タイトル
+        content: 内容
+        image: 画像
+        create: 新規作成
+        back: 戻る
     confirmations:
       confirmed: メールアドレスが確認できました。
       new:

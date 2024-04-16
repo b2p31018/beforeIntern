@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center">記事一覧</h1>
+      
+      <div class="text-center">
+        <%= link_to t('devise.article.index.new_users_article'), new_users_article_path, class: "btn btn-primary btn-block", style: "width: 500px;" %>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>詳細</th>
+            <th>タイトル</th>
+            <th>内容</th>
+            <th>画像</th>
+            <th>編集 ・ 削除</th> <!-- 編集と削除を一行にまとめる -->
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= link_to "詳細", users_article_path(article), class: "btn btn-primary btn-block" %>
+              <td><%= article.title %></td>
+              <td><%= article.content %></td>
+              <td>
+                <% if article.image.present? && article.image.attached? %>
+                  <%= image_tag url_for(article.image), size: "100x100" %>
+                <% else %>
+                  画像なし
+                <% end %>
+              </td>
+              <!-- 編集と削除を一行にまとめる -->
+              <td>
+                <div class="d-inline-block">
+                  <%= link_to "編集", edit_users_article_path(article), class: "btn btn-success btn-sm mr-2" %>
+                </div>
+                <div class="d-inline-block">
+                  <%= button_to "削除", users_article_path(article), method: :delete, data: { confirm: "この記事を削除してもよろしいですか？" }, class: "btn btn-danger btn-sm", style: "white-space: nowrap;" %>
+                </div>
+              </td>
+              <td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
