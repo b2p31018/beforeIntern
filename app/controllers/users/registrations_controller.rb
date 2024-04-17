@@ -7,8 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController #deviseã
   end
 
   def update_resource(resource, params)
-    params.except!(:current_password)
+    if params[:password].present? || params[:password_confirmation].present?
+      super
+    else
+      params.except!(:current_password)
       resource.update_without_password(params)
+    end
   end
 
 
