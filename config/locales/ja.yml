@@ -1,12 +1,22 @@
 ---
 ja:
   activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      article:
+        title: "タイトル"
+        content: "内容"
+  errors:
+    messages:
+      blank: "%{attribute}を入力してください"
+      too_short: "%{attribute}は%{count}文字以上で入力してください"
+  devise:
+    article:
+      new:
+        title: "タイトル"
+        content: "内容"
+        image: "画像"
+      new_users_article: "記事の新規作成"
+      back: "戻る"
   date:
     abbr_day_names:
     - 日

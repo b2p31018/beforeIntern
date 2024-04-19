@@ -1,5 +1,16 @@
 <%= form_with(model: @article, url: users_articles_path, method: :post) do |form| %>
-      <h1 class="text-center">記事の新規作成</h1>
+  <h1 class="text-center">記事の新規作成</h1>
+
+  <% if @article.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= form.label :title, t('devise.article.new.title') %>
     <%= form.text_field :title, class: "form-control" %>
