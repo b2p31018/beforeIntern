@@ -1,0 +1,34 @@
+<%= form_with(model: @article, url: users_articles_path, method: :post) do |form| %>
+  <h1 class="text-center">記事の新規作成</h1>
+
+  <% if @article.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, t('devise.article.new.title') %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, t('devise.article.new.content') %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image, t('devise.article.new.image') %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit t('devise.article.new.create'), class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to t('devise.article.new.back'), users_articles_path %>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center">記事詳細</h1>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th>内容</th>
+            <th>画像</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @article.title %></td>
+            <td><%= @article.content %></td>
+            <td>
+              <% if @article.image.present? && @article.image.attached? %>
+                <%= image_tag url_for(@article.image), size: "100x100" %>
+              <% else %>
+                画像なし
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="text-center mb-3">
+        <div class="d-inline-block mr-2">
+          <%= link_to "編集", edit_users_article_path(@article), class: "btn btn-success btn-sm mr-2" %>
+        </div>
+        <div class="d-inline-block">
+          <%= button_to "削除", users_article_path(@article), method: :delete, data: { confirm: "この記事を削除してもよろしいですか？" }, class: "btn btn-danger btn-sm", style: "white-space: nowrap;" %>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-3">
+        <%= link_to "記事一覧に戻る", users_articles_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+</div>
